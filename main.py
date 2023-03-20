@@ -11,14 +11,17 @@ class Post(BaseModel):
     published: bool = True
     rating: Optional[int] = None
 
+my_posts = [{"title": "title 1", "content": "content 1", "id": 1},
+            {"title": "title 2", "content": "content 2", "id": 2}]
+
 @app.get("/")
 def get_user():
     return {"message": "Hello World"}
 
 @app.get("/posts")
 def get_posts():
-    return {"data": "This is your post"}
+    return {"data": my_posts}
 
-@app.post("/createpost")
+@app.post("/posts")
 def create_post(post: Post):
     return {"data": post}
