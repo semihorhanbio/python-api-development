@@ -45,3 +45,14 @@ def delete_post(id: int):
             my_posts.pop(i)
             break
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+@app.put("/posts/{id}")
+def update_post(id: int, post: Post):
+    for i, p in enumerate(my_posts):
+        if p['id'] == id:
+            post_dict = post.dict()
+            post_dict['id'] = id
+            my_posts[i] = post_dict
+            break
+    
+    return {"data": post_dict}
