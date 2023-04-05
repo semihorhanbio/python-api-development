@@ -19,3 +19,9 @@ class PostResponse(BaseModel):
 class UserCreate(BaseModel):
     email: EmailStr
     password: str
+
+class UserCreateResponse(BaseModel):
+    email: EmailStr
+
+    class Config:
+        orm_mode = True
